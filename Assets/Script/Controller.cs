@@ -20,6 +20,8 @@ public class Controller : MonoBehaviour {
 	private Vertex[] vertices;
 	private Edge[] edges;
 
+	bool a = true;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -39,6 +41,8 @@ public class Controller : MonoBehaviour {
 			v.setObj(sphere);
 			v.visualizeState ();
 		}
+
+		Debug.Log("Start ended");
 	}
 	
 	// Update is called once per frame

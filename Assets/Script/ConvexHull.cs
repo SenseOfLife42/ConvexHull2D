@@ -143,9 +143,9 @@ public class ConvexHull {
 
 		i1 = i2 = i3 = i4 = 0;
 		a1 = vertices [0].X () + vertices [0].Y ();
-		a3 = a1;
+		a4 = a1;
 		a2 = vertices [0].X () - vertices [0].Y ();
-		a4 = a2;
+		a3 = a2;
 
 		for (j = 1; j < n; j++) {
 			if (vertices [j].X () + vertices [j].Y () < a1) {
@@ -217,11 +217,13 @@ public class ConvexHull {
 		e3.computeCenterAndNormal ();
 		e4.computeCenterAndNormal ();
 
-		for (int k = 0; k < m; k++) {
-			if (vertices[k].isOnHull())
+		foreach (Vertex v in vertices) {
+			if (v.isOnHull())
 				continue;
-			if (Utility.inside(vertices[k], e1))
-				vertices[k].setState(Vertex.State.deleted);
+			if (v.isDeleted())
+				break;
+			if (Utility.inside(v, e1))
+				v.setState(Vertex.State.deleted);
 		}
 
 		edges[0] = e1;
